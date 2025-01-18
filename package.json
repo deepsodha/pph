@@ -1,0 +1,26 @@
+{
+  "name": "pi-health-next",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint:server": "cd server && cargo clippy -- -D warnings",
+    "lint:client": "cd client && pnpm run lint",
+    "lint": "concurrently \"npm:lint:*\"",
+    "format:server": "cd server && cargo fmt",
+    "format:client": "cd client && pnpm run format",
+    "format": "concurrently \"npm:format:*\"",
+    "build:server": "cd server && cargo build",
+    "build:client": "cd client && pnpm run build",
+    "postinstall": "cd client && pnpm i",
+    "build": "concurrently \"npm:build:*\"",
+    "prepare": "husky"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.1",
+    "husky": "^9.0.10"
+  }
+}

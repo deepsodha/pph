@@ -1,0 +1,10 @@
+pub mod app_methods;
+pub mod appointments;
+pub mod doctors;
+pub mod organizations;
+pub mod patients;
+pub mod prescriptions;
+pub mod servicelocation;
+pub mod staffs;
+pub mod system_admin;
+pub mod user;

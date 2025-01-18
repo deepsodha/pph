@@ -1,0 +1,12 @@
+pub mod appointments;
+pub mod disease_prediction;
+pub mod doctors;
+pub mod medicine_prediction;
+pub mod organization;
+pub mod patients;
+pub mod prescription;
+pub mod servicelocation;
+pub mod staff;
+pub mod syncs;
+pub mod systemadmin;
+pub mod user;

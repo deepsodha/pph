@@ -1,0 +1,14 @@
+[workspace]
+members = ["doc_server","services","features","appointment","doctor","common","organization","prescription","patient","system_admin","auth","utils", "db_services", "servicelocation", "meta","user", "staff", "meili_server", "ml"]
+resolver = "2"
+
+[profile.release]
+# less code to include into binary
+panic = 'abort' 
+# optimization over all codebase ( better optimization, slower build )
+codegen-units = 1
+# optimization for size ( more aggressive )
+opt-level = 'z' 
+# optimization for size 
+# opt-level = 's' 
+# link 

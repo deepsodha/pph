@@ -1,0 +1,58 @@
+[package]
+name = "features"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde_json = "1.0"
+validator = { version = "0", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+chrono = { version = "0", features = ["serde"] }
+uuid = { version = "1", features = ["serde", "v4"] }
+regex = "1"
+anyhow = "1"
+cosmo_store = { git = "https://github.com/deepsodha/cosmo_store-rs" }
+cosmo_store_util = { git = "https://github.com/deepsodha/cosmo_store-rs" }
+tokio = { version = "1", features = ["fs", "io-util"] }
+rand = "0"
+bcrypt = "0.10.0"
+biscuit-auth = "4"
+dotenv = "0.15"
+sqlx = { version = "0", features = [
+    "runtime-tokio-rustls",
+    "sqlite",
+    "uuid",
+    "chrono",
+    "json",
+] }
+ts-rs = {git = "https://github.com/Aleph-Alpha/ts-rs.git", features = ["serde-compat", "uuid-impl","chrono-impl",] }
+log = "0"
+cosmo_store_sqlx_sqlite = { git = "https://github.com/deepsodha/cosmo_store-rs" }
+
+common = {path = "../common"}
+appointment = {path = "../appointment"}
+doctor = {path = "../doctor"}
+organization = {path = "../organization"}
+prescription = {path = "../prescription"}
+patient = {path = "../patient"}
+auth = {path = "../auth"}
+system_admin = {path = "../system_admin"}
+utils = {path = "../utils"}
+user = {path = "../user"}
+services = {path = "../services"}
+db_services = {path = "../db_services"}
+
+[dev-dependencies]
+quickcheck = "1"
+quickcheck_macros = "1"
+speculoos = "0"
+fake = { version = "2", features = ['chrono'] }
+actix-rt = "2"
+frunk = "0"
+frunk_core = "0"
+rand = "0"
+tempfile = "3"
+
+

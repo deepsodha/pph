@@ -1,0 +1,28 @@
+[package]
+name = "utils"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+biscuit-auth = "4"
+anyhow = "1"
+dotenv = "0.15"
+bcrypt = "0.10.0"
+tokio = { version = "1", features = ["fs", "io-util"] }
+validator = { version = "0", features = ["derive"] }
+cosmo_store_sqlx_sqlite = { git = "https://github.com/deepsodha/cosmo_store-rs" }
+cosmo_store = { git = "https://github.com/deepsodha/cosmo_store-rs" }
+cosmo_store_util = { git = "https://github.com/deepsodha/cosmo_store-rs" }
+sqlx = { version = "0", features = [
+    "runtime-tokio-rustls",
+    "sqlite",
+    "uuid",
+    "chrono",
+    "json",
+] }
+nanoid = "0"
+
+[dev-dependencies]
+tempfile = "3"

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .sidebar {
+            background-color: #666;
+            color: #fff;
+            padding: 20px;
+            width: 200px;
+            position: fixed;
+            left: 0;
+            top: 80px;
+            height: calc(100% - 80px);
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .main-content {
+            margin-left: 220px;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            width: calc(25% - 30px);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                margin-left: 0;
+            }
+
+            .card {
+                width: calc(50% - 30px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Hello Doctor</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Patients</a></li>
+                <li><a href="#">Appointments</a></li>
+                <li><a href="#">Reports</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="sidebar">
+        <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Patients</a></li>
+            <li><a href="#">Appointments</a></li>
+            <li><a href="#">Doctors</a></li>
+            <li><a href="#">Reports</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="card">
+            <h2>Total Patients</h2>
+            <p>1200</p>
+        </div>
+        <div class="card">
+            <h2>Today's Appointments</h2>
+            <p>25</p>
+        </div>
+        <div class="card">
+            <h2>Total Doctors</h2>
+            <p>50</p>
+        </div>
+        <div class="card">
+            <h2>Total Revenue</h2>
+            <p>$50,000</p>
+        </div>
+    </div>
+</body>
+
+</html>

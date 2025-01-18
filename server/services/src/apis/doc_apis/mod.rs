@@ -1,0 +1,12 @@
+pub mod appointment_services;
+pub mod doctor_services;
+pub mod history_services;
+pub mod notes_services;
+pub mod organization_services;
+pub mod patient_services;
+pub mod presecription_services;
+pub mod select_rpc;
+pub mod servicelocation_services;
+pub mod staff_services;
+pub mod systemadmin_services;
+pub mod user_services;

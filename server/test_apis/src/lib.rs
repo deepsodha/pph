@@ -1,0 +1,9 @@
+pub mod appointments;
+pub mod doctor_services;
+pub mod helper;
+pub mod organizations;
+pub mod patient_services;
+pub mod prescription;
+pub mod servicelocation;
+pub mod start;
+pub mod systemadmin;

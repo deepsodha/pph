@@ -1,0 +1,32 @@
+[package]
+name = "db_services"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde_json = "1.0"
+chrono = { version = "0", features = ["serde"] }
+ts-rs = {git = "https://github.com/Aleph-Alpha/ts-rs.git", features = ["serde-compat", "uuid-impl","chrono-impl",] }
+serde = { version = "1", features = ["derive"] }
+uuid = { version = "1", features = ["serde", "v4"] }
+organization = {path = "../organization"}
+doctor ={ path = "../doctor"}
+patient ={ path = "../patient"}
+common = {path = "../common"}
+system_admin = {path = "../system_admin"}
+prescription ={ path = "../prescription"}
+appointment ={ path = "../appointment"}
+servicelocation ={ path = "../servicelocation"}
+staff = {path = "../staff"}
+user = {path = "../user"}
+
+sqlx = { version = "0", features = [
+    "runtime-tokio-rustls",
+    "sqlite",
+    "uuid",
+    "chrono",
+    "json",
+] }
+log = "0"

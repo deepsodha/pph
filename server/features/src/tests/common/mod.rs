@@ -1,0 +1,13 @@
+pub mod address_test;
+//pub mod contact_test;
+pub mod email_or_mobile_test;
+pub mod email_test;
+pub mod encrypted_string_test;
+pub mod fax_test;
+//pub mod min_max_words_test;
+pub mod name_test;
+pub mod non_empty_vec_test;
+//pub mod photo_url_test;
+pub mod reminder_test;
+pub mod required_string_test;
+//pub mod url_test;

@@ -1,0 +1,19 @@
+[package]
+name = "auth"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+validator = { version = "0", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+ts-rs = {git = "https://github.com/Aleph-Alpha/ts-rs.git", features = ["serde-compat", "uuid-impl","chrono-impl",] }
+chrono = { version = "0", features = ["serde"] }
+anyhow = "1"
+cosmo_store = { git = "https://github.com/deepsodha/cosmo_store-rs" }
+cosmo_store_util = { git = "https://github.com/deepsodha/cosmo_store-rs" }
+uuid = { version = "1", features = ["serde", "v4"] }
+log = "0"
+
+common = {path = "../common"}

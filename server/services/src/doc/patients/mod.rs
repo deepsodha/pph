@@ -1,0 +1,13 @@
+pub mod addhistorical;
+pub mod addminister;
+pub mod allergy;
+pub mod command;
+pub mod get_patient_id;
+pub mod helper;
+pub mod history;
+pub mod medication;
+pub mod notaddminister;
+pub mod notes;
+pub mod order;
+pub mod problems;
+pub mod vitals;

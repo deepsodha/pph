@@ -1,0 +1,18 @@
+vaccine,vaccine_type
+Measles vaccine,Live-attenuated vaccines
+mumps vaccine,Live-attenuated vaccines
+rubella (MMR) vaccine,Live-attenuated vaccines
+varicella (chickenpox) vaccine,Live-attenuated vaccines
+Polio vaccine,Inactivated vaccines
+influenza vaccine,Inactivated vaccines
+Haemophilus influenzae type B (Hib) vaccine (conjugate),Subunit vaccines
+pneumococcal vaccine (polysaccharide or conjugate),Subunit vaccines
+shingles vaccine (recombinant protein),Subunit vaccines
+hepatitis B (recombinant protein),Subunit vaccines
+acellular pertussis,Subunit vaccines
+MenACWY (conjugate),Subunit vaccines
+Tetanus vaccine,Toxoid vaccines
+diphtheria vaccine,Toxoid vaccines
+Ebola vaccine,Viral vector vaccines
+COVID-19 vaccine (AstraZeneca and Johnson & Johnson),Viral vector vaccines
+Pfizer-BioNTech COVID-19 vaccine,Messenger RNA (mRNA) vaccines

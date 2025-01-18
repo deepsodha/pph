@@ -1,0 +1,285 @@
+Adenocarcinoma
+Multiple myeloma
+Anemia
+Menorrhagia
+Ringworm [Dermatophytes]
+Coronary artery disease
+Diabetes mellitus
+Chronic obstructive pulmonary disease (COPD)
+Iron-deficiency anemiais
+Sepsis
+Nappy Rash
+Pulmonary Hypertension
+Myocardial infraction
+Pertussis (Whooping Cough)
+Fibrocystic breast or fibrocystic breast disease
+Atrophic vaginitis (Vaginal dryness)
+Back pain
+Strongyloidiasis
+Peritonitis
+Cirrhosis
+Pericarditis
+Thromboembolic disorders
+Insomnia
+or spastic colon)
+Vertigo
+Autism [Autistic spectrum disorder (ASD)]
+Hypertension
+Anthrax
+HIV infection
+RA (Rheumatoid Arthritis)
+Hodgkin lymphomas
+Goitre
+Asthma
+Osteoarthritis
+Inflammation
+Pellagra
+Prostate cancer
+Hypotension (Low Blood Pressure)
+Hyperthyroidism
+Paget's disease of bone
+Tonsillitis
+Non-Hodgkin Lymphomas (NHLs)
+Systemic sclerosis
+Cystic fibrosis
+Inflammatory bowel disease (IBD)
+Rheumatoid arthritis
+Tinnitus
+Hypercalcemia
+Urticaria
+Nausea and Vomitting
+CMV - pneumonia ( Cytomegalovirus (CMV) pneumonia  )
+Hypothyroidism
+Vulvovaginal candidiasis
+Peripheral vascular diseases
+Pulmonary oedema
+Dyspepsia
+Infertility
+Fever
+Cystinuria
+Gastro intestinal tract Spasm
+Leprosy
+Middle ear infections
+Typhoid fever
+Eczema
+Gangrene
+Gout
+Psoriatic arthritis
+Osteoporosis
+Cerebral palsy (CP)
+Coagulation (clotting)
+Thrombus
+Mastoiditis
+Deep vein thrombosis
+Heart attack
+Bedwetting
+Angina Pectoris
+Benign prostatic hyperplasia (BPH)
+Graves' disease
+Obesity
+Anaphylaxis
+Allergic conjunctivitis
+Hirsutism
+Hyperprolactinaemia
+Kaposi’s sarcoma
+Depression
+Allergic rhinitis
+Tourette Syndrome
+Amebiasis
+Edema
+Narcolepsy
+Venous Thrombo Embolism
+Leukemia
+Acute myeloid leukemia (AML)
+Cough
+Meningitis
+Measles
+Functional bowel disorders
+Hepatic Encephalopathy
+Local anesthesia
+Conjunctivitis ( pinkeye )
+Acquired immune deficiency syndrome or Acquired immunodeficiency syndrome
+Atrial flutter
+Hay fever
+Organophosphorous poisoning
+Ocular Hypertension
+Gastric Ulcer
+Dry eye syndrome
+Meniere's disease
+Supraventricular tachycardia
+Pancreatectomy.
+Candidiasis
+Testicular cancer (Cancer of the Testicle)
+Stroke
+Herpes Simplex
+Retinoblastoma
+Influenza (flu)
+Abscess
+Scabies
+Plague
+Cervical spondylosis
+Pneumonia
+Chickenpox
+Ear Infection
+Indigestion
+Constipation
+Pruritus
+Muscle spasm
+Juvenile idiopathic arthritis
+Breastcancer
+Tinea Cruris (“jock itch”)
+Endocarditis
+Urinary tract infection
+Fatty liver
+Amenorrhea
+Pancreatic cancer
+Taeniasis
+Plaque psoriasis
+Irritable bowel syndrome (IBS
+Myxedema
+Renal cell carcinoma
+Chlamydia
+Osteomalacia
+Otitis media
+Gastritis
+Flu
+Human immunodeficiency virus infection / acquired immunodeficiency syndrome (HIV/AIDS)
+Legionnaires' Disease
+Polycythemia vera
+Bulimia nervosa
+Emphysema
+Accute pain
+Skin infections
+Tumor
+Psychosis
+Heart failure
+Angioedema
+Bronchitis
+Pulmonary embolism
+Tinea Pedis ( Athlete's foot )
+Malaria
+Keratitis
+Dermatitis  or eczema
+Dyslexia
+Motion sickness
+Neuralgia
+Brain tumor
+Diarrhea
+Acute diarrhoea
+Juvenile rheumatoid arthritis
+Biliary cirrhosis
+Supraventricular arrhythmias
+Diphtheria
+Wilms' Tumor  (Nephroblastoma )
+Benign prostatic hyperplasia
+Atopic dermatitis
+Dysmenorrhea
+Rickets
+Common cold
+Gingivitis
+Panic attack
+Arthritis
+Bipolar disorder
+Tapeworm infection
+Rubella Virus
+Urinary Incontinence
+Arrhythmia
+Hepatitis
+Wilson's disease
+Pancreatin deficiency
+Acute promyelocytic leukemia (APL)
+Dry cough
+Seizures
+Schizophrenia
+Gram-negative infections
+Malignant hyperthermia
+Dystonia
+Absence seizures
+Hepatitis B
+Attention deficit hyperactivity diorder(ADHD)
+Zollinger–Ellison syndrome
+Acromegaly
+Gallstone
+Scurvy
+Melanoma
+Epilepsy
+Dermatophytosis
+Rabies
+Tuberculosis
+Toxoplasmosis
+Eerectile dysfunction
+Social Anxiety Disorder (social phobia)
+Pemphigus
+Parkinson's disease
+Impetigois
+Miscarriage
+Wolff-Parkinson-White syndrome
+Herpes zoster
+Septicemia
+Acne vulgaris
+Down syndrome
+GERD
+Type 2 Diabetes Mellitus
+Hypoglycemia
+Headache
+Ovarian cancer
+Grand mal seizure
+Hemorrhoids
+Lung cancer
+Varicella zoster
+Respiratoy tract infections
+Angina
+Cystitis
+Beriberi
+Pharyngitis
+Vaginal yeast infection
+Bacterial vaginosis
+Dementia
+Gonorrhea
+Alzheimer's disease
+Filariasis
+Chronic pancreatitis
+Malignant effusions
+Cholesterol
+Hyperparathyroidism
+Diabetes insipidus
+Neuroblastoma
+Peptic ulcer disease
+Giardiasis
+Peripheral neuropathy (PN)
+Intra-abdominal infections
+Glaucoma
+Colo Rectal Cancer
+Rheumatic fever
+Bladder cancer
+Q fever
+Pain
+Iritis
+Migraine
+Ewing’s sarcoma
+Trigeminal Neuralgia
+Ulcerative colitis
+Onchocerciasis (River Blindness)
+Seborrheic Dermatitis
+Cholera
+Pneumocystis pneumonia (PCP)
+Ventricular arrhythmias
+Sinusitis
+Psoriasis
+Endometriosis
+Congestive heart failure
+Atherosclerosis
+Cervical cancer
+Anxiety Disorder
+Atrial fibrillation
+Heartburn
+Restless Leg Syndrome (RLS)
+Hodgkin's disease
+Skin and soft-tissue infections
+Gastro-intestinal infections
+Myocardial infarction
+Urethritis
+Spasticity
+Ascariasis
+Crohn's disease
+Respiratory Syncytial Virus Infection (RSV)

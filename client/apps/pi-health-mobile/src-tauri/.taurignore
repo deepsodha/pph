@@ -1,0 +1,7 @@
+read_dev.db
+read_dev.db-wal
+read_dev.db-shm
+
+write_dev.db
+write_dev.db-wal
+write_dev.db-shm

@@ -1,0 +1,12 @@
+pub mod allergies;
+pub mod history;
+pub mod immunizations;
+pub mod medication;
+pub mod notes;
+pub mod patient;
+pub mod patient_aggregate;
+pub mod patient_commands;
+pub mod patient_domain;
+pub mod patient_events;
+pub mod problem;
+pub mod vital;

@@ -1,0 +1,36 @@
+[package]
+name = "patient"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+validator = { version = "0", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+ts-rs = {git = "https://github.com/Aleph-Alpha/ts-rs.git", features = ["serde-compat", "uuid-impl","chrono-impl",] }
+chrono = { version = "0", features = ["serde"] }
+uuid = { version = "1", features = ["serde", "v4"] }
+anyhow = "1"
+cosmo_store = { git = "https://github.com/deepsodha/cosmo_store-rs" }
+cosmo_store_util = { git = "https://github.com/deepsodha/cosmo_store-rs" }
+serde_json = "1.0"
+rand = "0"
+sqlx = { version = "0", features = [
+    "runtime-tokio-rustls",
+    "sqlite",
+    "uuid",
+    "chrono",
+    "json",
+] }
+log = "0"
+
+common = {path = "../common"}
+doctor = {path = "../doctor"}
+
+[dev-dependencies]
+quickcheck = "1"
+quickcheck_macros = "1"
+speculoos = "0"
+fake = { version = "2", features = ['chrono'] }
+actix-rt = "2"
