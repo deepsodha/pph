@@ -1,1 +1,0 @@
-{"run-app-desktop":{"identifier":"run-app-desktop","description":"Permissions to run the app (desktop only)","context":"local","windows":["main"],"permissions":["window:allow-internal-on-mousemove","window:default"],"platforms":["linux","macOS","windows"]}}
