@@ -1,8 +1,0 @@
-{
-  "extends": "@repo/typescript-config/service.json",
-  "compilerOptions": {
-    "outDir": "dist"
-  },
-  "include": ["src/**/*", "dto/**/*", "validation/**/*" ,"dexie-state/**/*"],
-  "exclude": ["node_modules", "dist"]
-}
