@@ -1,0 +1,25 @@
+import { z } from "zod";
+
+export const historyAndPhysicalAddSchema = z.object({
+	patient_id: z.string(),
+	chief_complaint: z.string(),
+	history_of_present_illness: z.string(),
+	past_medical_history: z.string(),
+	past_surgical_history: z.string(),
+	family_history: z.string(),
+	social_history: z.string(),
+	obstetric_and_pregnancy_history: z.string(),
+	hospitalizations: z.string(),
+	implantable_devices: z.string(),
+	review_of_systems: z.string(),
+	medications_id: z.string(),
+	allergies_id: z.string(),
+	mental_or_functional: z.string(),
+	vitals_id: z.string(),
+	exam: z.string(),
+	assessment: z.string(),
+	plan: z.string(),
+	minor_procedures: z.string(),
+	goals: z.string(),
+	health_concerns: z.string(),
+});
