@@ -1,0 +1,83 @@
+import { Box } from "@chakra-ui/react";
+import { UpdateDoctorDetailsDataFn } from "../../query-mutation-services/doctor-detail-data-fn";
+import { useParams } from "@tanstack/react-router";
+import { useAtom } from "jotai";
+import EyeIcon from "../../assets/confirm_password_icon.svg";
+import hideEyeIcon from "../../assets/hideyeicon.svg";
+import {
+	headerText,
+	addValue,
+	formValue,
+	dashboardValue,
+	displayMenu,
+} from "../../atoms/header";
+import { DocterDetailsForm } from "@repo/ui/forms";
+import type { DoctorAdd, DoctorUpdate } from "@repo/types/dto";
+import { db } from "../../db/db";
+import { useLiveQuery } from "dexie-react-hooks";
+import { useMountEffect } from "@react-hookz/web";
+
+import { motion, AnimatePresence } from "framer-motion";
+
+const MotionBox = motion(Box);
+const DocterDetailsEditForm = () => {
+	const [, setHeaderText] = useAtom(headerText);
+	const [, setAddValue] = useAtom(addValue);
+	const [, setFormValue] = useAtom(formValue);
+	const [, setDashboardValue] = useAtom(dashboardValue);
+	const [, setmenu] = useAtom(displayMenu);
+	const updateMutation = UpdateDoctorDetailsDataFn();
+
+	const docters = useLiveQuery(() => db.doctors.toArray());
+	const doctorId = useParams({
+		from: "/doctor/edit/$doctorId",
+		select: (params) => params.doctorId,
+	});
+
+	const user = useLiveQuery(() => db.user.toArray());
+
+	const filteredData = ((docters && docters) || []).filter(
+		(item) => doctorId && item.id.includes(doctorId),
+	)[0];
+
+	useMountEffect(() => {
+		setHeaderText("Edit Doctor");
+		setAddValue(true);
+		setFormValue(true);
+		setDashboardValue(false);
+		setmenu(false);
+	});
+	return (
+		<>
+			<AnimatePresence>
+				<Box bgColor={"#F7F7F9"}>
+					<MotionBox
+						initial={{ opacity: 0, x: 50 }}
+						animate={{ opacity: 1, x: 0 }}
+						exit={{ opacity: 0, x: 50 }}
+						transition={{ duration: 0.65 }}
+					>
+						<DocterDetailsForm
+							onSubmit={(p) => {
+								const editVal: DoctorUpdate = {
+									id: doctorId,
+									doctor: { ...(p as DoctorAdd) },
+								};
+								updateMutation.mutateAsync(editVal);
+							}}
+							user={user}
+							image_url1={hideEyeIcon}
+							image_url2={EyeIcon}
+							doctorId={doctorId}
+							initialValues={filteredData}
+							edit={true}
+							lastUpdatedInput={db.getLastUpdated}
+						/>
+					</MotionBox>
+				</Box>
+			</AnimatePresence>
+		</>
+	);
+};
+
+export default DocterDetailsEditForm;
