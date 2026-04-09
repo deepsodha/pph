@@ -1,0 +1,10 @@
+{
+  "rust-analyzer.linkedProjects": [
+    "./apps/pi-pharmacy/src-tauri/Cargo.toml",
+    
+  ],
+  "cSpell.words": [
+    "sqlx"
+  ],
+  "rust-analyzer.showUnlinkedFileNotification": false
+}

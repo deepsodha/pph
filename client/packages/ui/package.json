@@ -1,0 +1,43 @@
+{
+  "name": "@repo/ui",
+  "version": "0.0.1",
+  "private": true,
+  "exports": {
+    "./component": "./component/index.tsx",
+    "./card": "./src/card.tsx",
+    "./forms": "./forms/index.tsx"
+  },
+  "scripts": {
+    "generate:component": "turbo gen react-component"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@tauri-apps/cli": ">=2.0.0-beta.0",
+    "@turbo/gen": "^1.11.3",
+    "@types/eslint": "^8.56.1",
+    "@types/node": "^20.10.6",
+    "@types/react": "^18.2.46",
+    "@types/react-dom": "^18.2.18",
+    "react": "^18.2.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^2.1.1",
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@felte/react": "^1.2.13",
+    "@felte/reporter-dom": "^1.1.9",
+    "@felte/validator-zod": "^1.0.17",
+    "@repo/services": "workspace:*",
+    "@repo/types": "workspace:*",
+    "@tauri-apps/api": ">=2.0.0-beta.0",
+    "chakra-multiselect": "^0.4.13",
+    "date-fns": "2",
+    "date-fns-tz": "2",
+    "framer-motion": "^11.0.3",
+    "jotai": "^2.6.4",
+    "react-select": "^5.8.0",
+    "zod": "^3.22.4"
+  }
+}
