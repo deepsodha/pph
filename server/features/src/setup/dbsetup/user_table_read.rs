@@ -17,5 +17,15 @@ pub async fn create_user_state_table(read_pool: Pool<Sqlite>) -> Result<()> {
     .execute(&read_pool)
     .await?;
 
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_user_org_id ON user_table_state(org_id)")
+        .execute(&read_pool)
+        .await?;
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_user_last_updated ON user_table_state(last_updated)")
+        .execute(&read_pool)
+        .await?;
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_user_stream_id ON user_table_state(stream_id)")
+        .execute(&read_pool)
+        .await?;
+
     Ok(())
 }

@@ -17,5 +17,15 @@ pub async fn create_notadminister_state_table(read_pool: Pool<Sqlite>) -> Result
     .execute(&read_pool)
     .await?;
 
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_notadminister_org_id ON notadminister_table_state(org_id)")
+        .execute(&read_pool)
+        .await?;
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_notadminister_last_updated ON notadminister_table_state(last_updated)")
+        .execute(&read_pool)
+        .await?;
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_notadminister_stream_id ON notadminister_table_state(stream_id)")
+        .execute(&read_pool)
+        .await?;
+
     Ok(())
 }

@@ -4,20 +4,24 @@ use sqlx::{Pool, Sqlite};
 
 use super::DataTable;
 
+const DEFAULT_PAGE_LIMIT: i64 = 500;
+
 pub async fn fetch_states<T>(
     table_name: &str,
     input: &DateTime<Utc>,
     org_id: &str,
+    limit: Option<i64>,
     state: Pool<Sqlite>,
 ) -> Result<Vec<T>>
 where
     T: serde::de::DeserializeOwned,
 {
+    let page_limit = limit.unwrap_or(DEFAULT_PAGE_LIMIT).max(1).min(1000);
     let mut tx = state.begin().await?;
 
     let query = format!(
-        "SELECT * FROM {} WHERE last_updated > ? AND org_id = ? AND (data->>'is_deleted') = $3",
-        table_name
+        "SELECT * FROM {} WHERE last_updated > ? AND org_id = ? AND (data->>'is_deleted') = $3 ORDER BY last_updated ASC LIMIT {}",
+        table_name, page_limit
     );
 
     let rows = sqlx::query_as::<_, DataTable>(&query)

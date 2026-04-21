@@ -302,7 +302,10 @@ pub async fn get_all_allergies_handler() -> Result<Value, ErrorData> {
     log::info!("Handling get_all_allergies request");
 
     let path = "statics/data/allergy.csv";
-    let records = read_allergies_csv(path).unwrap();
+    let records = read_allergies_csv(path).map_err(|e| {
+        log::error!("Failed to read allergy data from '{}': {}", path, e);
+        ErrorData::new(-32603, "Failed to load allergy data")
+    })?;
 
     let countries = get_all_allergies(&records);
 

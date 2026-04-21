@@ -54,7 +54,8 @@ pub async fn add_systemadmin(
     let is_valid_password = ValidPassword::parse(&params.password).is_ok();
 
     if is_valid_password {
-        let hash = hash_password(&params.password).unwrap();
+        let hash = hash_password(&params.password)
+            .map_err(|e| ErrorData::new(-32603, &format!("Password hashing failed: {}", e)))?;
         let is_valid = verify_password(&hash, &params.confirm_password).unwrap_or(false);
 
         if is_valid {
@@ -247,7 +248,8 @@ pub async fn update_systemadmin(
 
     let is_valid_password = ValidPassword::parse(&params.input.password).is_ok();
     if is_valid_password {
-        let hash = hash_password(&params.input.password).unwrap();
+        let hash = hash_password(&params.input.password)
+            .map_err(|e| ErrorData::new(-32603, &format!("Password hashing failed: {}", e)))?;
         let is_valid = verify_password(&hash, &params.input.confirm_password).unwrap_or(false);
 
         if is_valid {

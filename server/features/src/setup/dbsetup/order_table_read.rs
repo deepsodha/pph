@@ -17,5 +17,15 @@ pub async fn create_order_state_table(read_pool: Pool<Sqlite>) -> Result<()> {
     .execute(&read_pool)
     .await?;
 
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_order_org_id ON order_table_state(org_id)")
+        .execute(&read_pool)
+        .await?;
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_order_last_updated ON order_table_state(last_updated)")
+        .execute(&read_pool)
+        .await?;
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_order_stream_id ON order_table_state(stream_id)")
+        .execute(&read_pool)
+        .await?;
+
     Ok(())
 }

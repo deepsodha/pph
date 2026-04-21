@@ -17,5 +17,15 @@ pub async fn create_servicelocation_state_table(read_pool: Pool<Sqlite>) -> Resu
     .execute(&read_pool)
     .await?;
 
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_servicelocation_org_id ON servicelocation_table_state(org_id)")
+        .execute(&read_pool)
+        .await?;
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_servicelocation_last_updated ON servicelocation_table_state(last_updated)")
+        .execute(&read_pool)
+        .await?;
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_servicelocation_stream_id ON servicelocation_table_state(stream_id)")
+        .execute(&read_pool)
+        .await?;
+
     Ok(())
 }

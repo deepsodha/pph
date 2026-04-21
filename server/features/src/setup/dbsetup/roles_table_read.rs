@@ -14,5 +14,9 @@ pub async fn create_roles_table(read_pool: Pool<Sqlite>) -> Result<()> {
     .execute(&read_pool)
     .await?;
 
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_roles_user_id ON roles(user_id)")
+        .execute(&read_pool)
+        .await?;
+
     Ok(())
 }

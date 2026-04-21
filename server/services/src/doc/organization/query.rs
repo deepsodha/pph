@@ -39,7 +39,10 @@ pub async fn drug_handler() -> Result<Value, ErrorData> {
     log::info!("Handling get_all_drug request");
 
     let path = "statics/data/combined.json";
-    let records = read_json_from_file(path).unwrap();
+    let records = read_json_from_file(path).map_err(|e| {
+        log::error!("Failed to read drug data from '{}': {}", path, e);
+        ErrorData::new(-32603, "Failed to load drug data")
+    })?;
 
     log::info!("get_all_drug request handled successfully");
     serde_json::to_value(records).map_err(ErrorData::from)
@@ -49,7 +52,10 @@ pub async fn get_all_vaccine_handler() -> Result<Value, ErrorData> {
     log::info!("Handling get_all_vaccines request");
 
     let path = "statics/data/vaccine.csv";
-    let records = read_vaccine_csv(path).unwrap();
+    let records = read_vaccine_csv(path).map_err(|e| {
+        log::error!("Failed to read vaccine data from '{}': {}", path, e);
+        ErrorData::new(-32603, "Failed to load vaccine data")
+    })?;
 
     let vaccines = get_all_vaccines(&records);
 

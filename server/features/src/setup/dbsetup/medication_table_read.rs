@@ -17,5 +17,15 @@ pub async fn create_medication_state_table(read_pool: Pool<Sqlite>) -> Result<()
     .execute(&read_pool)
     .await?;
 
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_medication_org_id ON medication_table_state(org_id)")
+        .execute(&read_pool)
+        .await?;
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_medication_last_updated ON medication_table_state(last_updated)")
+        .execute(&read_pool)
+        .await?;
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_medication_stream_id ON medication_table_state(stream_id)")
+        .execute(&read_pool)
+        .await?;
+
     Ok(())
 }

@@ -19,5 +19,15 @@ pub async fn create_auth_table(read_pool: Pool<Sqlite>) -> Result<()> {
     .execute(&read_pool)
     .await?;
 
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_auth_user_name ON auth(user_name)")
+        .execute(&read_pool)
+        .await?;
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_auth_mobile_number ON auth(mobile_number)")
+        .execute(&read_pool)
+        .await?;
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_auth_org_id ON auth(org_id)")
+        .execute(&read_pool)
+        .await?;
+
     Ok(())
 }

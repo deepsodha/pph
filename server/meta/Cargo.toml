@@ -10,6 +10,7 @@ actix-web = "4"
 actix-files = "0"
 actix-web-httpauth = "0"
 actix-cors = "0"
+actix-governor = "0"
 anyhow = "1"
 env_logger = "0"
 dotenv = "0"
@@ -22,6 +23,9 @@ thiserror = "1"
 biscuit-auth = "4"
 biscuit-actix-middleware = { git = "https://github.com/biscuit-auth/biscuit-actix-middleware" }
 log = "0"
+tracing = "0"
+tracing-subscriber = { version = "0", features = ["env-filter", "json"] }
+tracing-log = "0"
 ts-rs = {git = "https://github.com/Aleph-Alpha/ts-rs.git", features = ["serde-compat", "uuid-impl","chrono-impl",] }
 sqlx = { version = "0", features = [
     "runtime-tokio-rustls",

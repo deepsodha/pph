@@ -17,5 +17,15 @@ pub async fn create_implantabledevices_state_table(read_pool: Pool<Sqlite>) -> R
     .execute(&read_pool)
     .await?;
 
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_implantabledevices_org_id ON implantabledevices_table_state(org_id)")
+        .execute(&read_pool)
+        .await?;
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_implantabledevices_last_updated ON implantabledevices_table_state(last_updated)")
+        .execute(&read_pool)
+        .await?;
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_implantabledevices_stream_id ON implantabledevices_table_state(stream_id)")
+        .execute(&read_pool)
+        .await?;
+
     Ok(())
 }

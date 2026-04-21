@@ -39,10 +39,12 @@ pub async fn sync(
     org_id: String,
     state: Pool<Sqlite>,
 ) -> Result<SyncData> {
+    let limit = input.limit;
     let patient_states = fetch_states::<PatientState>(
         "patient_table_state",
         &input.patients,
         &org_id,
+        limit,
         state.clone(),
     )
     .await?;
@@ -50,16 +52,23 @@ pub async fn sync(
         "systemadmin_table_state",
         &input.system_admin,
         &org_id,
+        limit,
         state.clone(),
     )
     .await?;
-    let doctor_states =
-        fetch_states::<DoctorState>("doctor_table_state", &input.doctors, &org_id, state.clone())
-            .await?;
+    let doctor_states = fetch_states::<DoctorState>(
+        "doctor_table_state",
+        &input.doctors,
+        &org_id,
+        limit,
+        state.clone(),
+    )
+    .await?;
     let appointment_states = fetch_states::<AppointmentState>(
         "appointment_table_state",
         &input.appointments,
         &org_id,
+        limit,
         state.clone(),
     )
     .await?;
@@ -67,6 +76,7 @@ pub async fn sync(
         "prescription_table_state",
         &input.prescription,
         &org_id,
+        limit,
         state.clone(),
     )
     .await?;
@@ -74,6 +84,7 @@ pub async fn sync(
         "servicelocation_table_state",
         &input.service_location,
         &org_id,
+        limit,
         state.clone(),
     )
     .await?;
@@ -81,6 +92,7 @@ pub async fn sync(
         "addhistorical_table_state",
         &input.add_historical,
         &org_id,
+        limit,
         state.clone(),
     )
     .await?;
@@ -88,6 +100,7 @@ pub async fn sync(
         "administer_table_state",
         &input.administer,
         &org_id,
+        limit,
         state.clone(),
     )
     .await?;
@@ -95,6 +108,7 @@ pub async fn sync(
         "allergies_table_state",
         &input.allergy,
         &org_id,
+        limit,
         state.clone(),
     )
     .await?;
@@ -102,6 +116,7 @@ pub async fn sync(
         "medication_table_state",
         &input.medication,
         &org_id,
+        limit,
         state.clone(),
     )
     .await?;
@@ -109,26 +124,39 @@ pub async fn sync(
         "notadminister_table_state",
         &input.not_administer,
         &org_id,
+        limit,
         state.clone(),
     )
     .await?;
-    let order_states =
-        fetch_states::<OrderState>("order_table_state", &input.order, &org_id, state.clone())
-            .await?;
+    let order_states = fetch_states::<OrderState>(
+        "order_table_state",
+        &input.order,
+        &org_id,
+        limit,
+        state.clone(),
+    )
+    .await?;
     let problem_states = fetch_states::<ProblemState>(
         "problem_table_state",
         &input.problems,
         &org_id,
+        limit,
         state.clone(),
     )
     .await?;
-    let vitals_states =
-        fetch_states::<VitalsState>("vitals_table_state", &input.vitals, &org_id, state.clone())
-            .await?;
+    let vitals_states = fetch_states::<VitalsState>(
+        "vitals_table_state",
+        &input.vitals,
+        &org_id,
+        limit,
+        state.clone(),
+    )
+    .await?;
     let familyhistory_states = fetch_states::<FamilyHistoryState>(
         "familyhistory_table_state",
         &input.familyhistory,
         &org_id,
+        limit,
         state.clone(),
     )
     .await?;
@@ -136,6 +164,7 @@ pub async fn sync(
         "hospitalization_table_state",
         &input.hospitalization,
         &org_id,
+        limit,
         state.clone(),
     )
     .await?;
@@ -143,6 +172,7 @@ pub async fn sync(
         "implantabledevices_table_state",
         &input.implantabledevices,
         &org_id,
+        limit,
         state.clone(),
     )
     .await?;
@@ -150,6 +180,7 @@ pub async fn sync(
         "obandpregnancy_table_state",
         &input.obandpregnanacy,
         &org_id,
+        limit,
         state.clone(),
     )
     .await?;
@@ -157,6 +188,7 @@ pub async fn sync(
         "pastmedicalhistory_table_state",
         &input.pastmedicalhistory,
         &org_id,
+        limit,
         state.clone(),
     )
     .await?;
@@ -164,6 +196,7 @@ pub async fn sync(
         "pastsurgicalhistory_table_state",
         &input.pastsurgicalhistory,
         &org_id,
+        limit,
         state.clone(),
     )
     .await?;
@@ -171,20 +204,39 @@ pub async fn sync(
         "socialhistory_table_state",
         &input.socialhistory,
         &org_id,
+        limit,
         state.clone(),
     )
     .await?;
-    let note_states =
-        fetch_states::<NoteState>("note_table_state", &input.note, &org_id, state.clone()).await?;
-    let staff_states =
-        fetch_states::<StaffState>("staff_table_state", &input.staff, &org_id, state.clone())
-            .await?;
-    let user_states =
-        fetch_states::<UserState>("user_table_state", &input.user, &org_id, state.clone()).await?;
+    let note_states = fetch_states::<NoteState>(
+        "note_table_state",
+        &input.note,
+        &org_id,
+        limit,
+        state.clone(),
+    )
+    .await?;
+    let staff_states = fetch_states::<StaffState>(
+        "staff_table_state",
+        &input.staff,
+        &org_id,
+        limit,
+        state.clone(),
+    )
+    .await?;
+    let user_states = fetch_states::<UserState>(
+        "user_table_state",
+        &input.user,
+        &org_id,
+        limit,
+        state.clone(),
+    )
+    .await?;
     let organization_states = fetch_states::<OrganizationState>(
         "organization_table_state",
         &input.organization,
         &org_id,
+        limit,
         state.clone(),
     )
     .await?;
