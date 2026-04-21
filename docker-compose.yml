@@ -1,0 +1,77 @@
+version: "3.9"
+
+services:
+  meilisearch:
+    image: getmeili/meilisearch:v1.6
+    restart: unless-stopped
+    ports:
+      - "7700:7700"
+    environment:
+      MEILI_MASTER_KEY: ${MEILI_MASTER_KEY}
+      MEILI_ENV: production
+    volumes:
+      - meili_data:/meili_data
+
+  doc_server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.doc_server
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      APP_ENVIRONMENT: ${APP_ENVIRONMENT:-production}
+      PRIVATE_KEY: ${PRIVATE_KEY}
+      PUBLIC_KEY: ${PUBLIC_KEY}
+      READ_DB_FILE: /data/read.db
+      WRITE_DB_FILE: /data/write.db
+      FIRST_USER_ID: ${FIRST_USER_ID}
+      FIRST_USER_MOBILE: ${FIRST_USER_MOBILE}
+      FIRST_USER_FIRST_NAME: ${FIRST_USER_FIRST_NAME}
+      FIRST_USER_PASSWORD: ${FIRST_USER_PASSWORD}
+      RUST_LOG: ${RUST_LOG:-info}
+    volumes:
+      - doc_data:/data
+    depends_on:
+      - meilisearch
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health_check"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  meta_server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.meta
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      APP_ENVIRONMENT: ${APP_ENVIRONMENT:-production}
+      PRIVATE_KEY: ${PRIVATE_KEY}
+      PUBLIC_KEY: ${PUBLIC_KEY}
+      META_DB_FILE: /data/meta.db
+      MEILI_MASTER_KEY: ${MEILI_MASTER_KEY}
+      FIRST_USER_ID: ${FIRST_USER_ID}
+      FIRST_USER_MOBILE: ${FIRST_USER_MOBILE}
+      FIRST_USER_FIRST_NAME: ${FIRST_USER_FIRST_NAME}
+      FIRST_USER_PASSWORD: ${FIRST_USER_PASSWORD}
+      TEXT_LOCAL_API_KEY: ${TEXT_LOCAL_API_KEY}
+      RUST_LOG: ${RUST_LOG:-info}
+    volumes:
+      - meta_data:/data
+    depends_on:
+      - meilisearch
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health_check"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  meili_data:
+  doc_data:
+  meta_data:

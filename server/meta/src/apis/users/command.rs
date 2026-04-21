@@ -13,7 +13,8 @@ pub async fn add(
     biscuit: web::ReqData<Biscuit>,
     pool: web::Data<Pool<Sqlite>>,
 ) -> Result<HttpResponse, ApiError> {
-    let password = hash_password(&input.password).unwrap();
+    let password = hash_password(&input.password)
+        .map_err(|e| ApiError::Other(anyhow::anyhow!("Password hashing failed: {}", e)))?;
     match authorize("superadmin", &biscuit) {
         Ok(_) => {
             let mut tr = pool.begin().await?;

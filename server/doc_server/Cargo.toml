@@ -10,6 +10,7 @@ actix-web = "4"
 actix-files = "0"
 actix-web-httpauth = "0"
 actix-cors = "0"
+actix-governor = "0"
 rand = "0"
 cosmo_store = { git = "https://github.com/deepsodha/cosmo_store-rs" }
 cosmo_store_util = { git = "https://github.com/deepsodha/cosmo_store-rs" }
@@ -27,6 +28,9 @@ sqlx = { version = "0", features = [ "runtime-tokio-rustls", "sqlite", "uuid", "
 tokio = { version = "1", features = ["fs"] }
 log = "0"
 env_logger = "0"
+tracing = "0"
+tracing-subscriber = { version = "0", features = ["env-filter", "json"] }
+tracing-log = "0"
 csv = "1"
 
 

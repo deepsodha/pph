@@ -7,6 +7,7 @@ use crate::auth::login;
 use crate::clients::ui_config;
 use crate::meili_queries::api::{doctor_search, drug_search, icd_search, location_search};
 use actix_cors::Cors;
+use actix_governor::{Governor, GovernorConfigBuilder};
 use actix_web::http::header;
 use actix_web::{middleware, middleware::Logger, web, App, HttpServer};
 use anyhow::Result;
@@ -56,7 +57,14 @@ pub async fn server() -> Result<()> {
         .await
         .expect("Failed to migrate the database");
 
+    let governor_conf = GovernorConfigBuilder::default()
+        .requests_per_minute(120)
+        .burst_size(30)
+        .finish()
+        .expect("Invalid rate-limiter config");
+
     let server = HttpServer::new(move || {
+        let governor_conf = governor_conf.clone();
         let cors_base = Cors::default()
             .allowed_methods(vec!["POST", "GET", "PUT", "DELETE"])
             .allowed_headers(vec![header::AUTHORIZATION, header::ACCEPT])
@@ -81,6 +89,7 @@ pub async fn server() -> Result<()> {
         };
         App::new()
             .wrap(cors)
+            .wrap(Governor::new(&governor_conf))
             .app_data(web::Data::new(read_pool.clone()))
             .wrap(Logger::new("%a %{User-Agent}i - %D millisecond"))
             .wrap(middleware::Compress::default())

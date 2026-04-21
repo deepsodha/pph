@@ -1,8 +1,11 @@
 use crate::clients::clients_config;
+use crate::compaction::spawn_compaction_task;
 use crate::health_check::health_check;
+use crate::metrics::metrics_handler;
 use crate::phone_code::phone_code;
 use crate::{auth_rpc_handler, rpc_handler};
 use actix_cors::Cors;
+use actix_governor::{Governor, GovernorConfigBuilder};
 use actix_web::http::header;
 use actix_web::{middleware, middleware::Logger, web, App, HttpServer};
 use anyhow::Result;
@@ -62,9 +65,20 @@ pub async fn server() -> Result<()> {
         info!("{} Database already exists", read_db_conn);
     }
 
-    let write_pool = SqlitePoolOptions::new().connect(&write_db_conn).await?;
+    // SQLite allows only one writer at a time; keep write pool small to avoid
+    // queuing pressure and busy-timeout errors.
+    let write_pool = SqlitePoolOptions::new()
+        .max_connections(3)
+        .min_connections(1)
+        .acquire_timeout(std::time::Duration::from_secs(5))
+        .connect(&write_db_conn)
+        .await?;
 
+    // Read pool can be larger since reads do not block each other.
     let read_pool = SqlitePoolOptions::new()
+        .max_connections(20)
+        .min_connections(2)
+        .acquire_timeout(std::time::Duration::from_secs(5))
         .connect(&format!("sqlite:{}", &read_dev_db))
         .await?;
 
@@ -79,7 +93,17 @@ pub async fn server() -> Result<()> {
         }
     });
 
+    spawn_compaction_task(write_pool.clone());
+
+    // Allow 120 requests per minute per IP, with a burst of 30.
+    let governor_conf = GovernorConfigBuilder::default()
+        .requests_per_minute(120)
+        .burst_size(30)
+        .finish()
+        .expect("Invalid rate-limiter config");
+
     let server = HttpServer::new(move || {
+        let governor_conf = governor_conf.clone();
         let cors_base = Cors::default()
             .allowed_methods(vec!["POST", "GET"])
             .allowed_headers(vec![header::AUTHORIZATION, header::ACCEPT])
@@ -115,6 +139,7 @@ pub async fn server() -> Result<()> {
         App::new()
             .app_data(web::Data::new(app_state))
             .wrap(cors)
+            .wrap(Governor::new(&governor_conf))
             .wrap(Logger::new("%a %{User-Agent}i - %D millisecond"))
             .wrap(middleware::Compress::default())
             .service(web::resource("/auth").route(web::post().to(auth_rpc_handler)))
@@ -125,6 +150,7 @@ pub async fn server() -> Result<()> {
             )
             .service(web::resource("/phone_code").route(web::post().to(phone_code)))
             .route("/health_check", web::get().to(health_check))
+            .route("/metrics", web::get().to(metrics_handler))
             .configure(clients_config)
     });
     let _res = server.bind("0.0.0.0:5000")?.run().await;

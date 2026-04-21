@@ -17,5 +17,15 @@ pub async fn create_notes_state_table(read_pool: Pool<Sqlite>) -> Result<()> {
     .execute(&read_pool)
     .await?;
 
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_note_org_id ON note_table_state(org_id)")
+        .execute(&read_pool)
+        .await?;
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_note_last_updated ON note_table_state(last_updated)")
+        .execute(&read_pool)
+        .await?;
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_note_stream_id ON note_table_state(stream_id)")
+        .execute(&read_pool)
+        .await?;
+
     Ok(())
 }

@@ -17,5 +17,15 @@ pub async fn create_obandpregnancy_state_table(read_pool: Pool<Sqlite>) -> Resul
     .execute(&read_pool)
     .await?;
 
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_obandpregnancy_org_id ON obandpregnancy_table_state(org_id)")
+        .execute(&read_pool)
+        .await?;
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_obandpregnancy_last_updated ON obandpregnancy_table_state(last_updated)")
+        .execute(&read_pool)
+        .await?;
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_obandpregnancy_stream_id ON obandpregnancy_table_state(stream_id)")
+        .execute(&read_pool)
+        .await?;
+
     Ok(())
 }

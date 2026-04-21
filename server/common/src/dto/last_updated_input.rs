@@ -31,4 +31,9 @@ pub struct LastUpdatedInput {
     pub note: DateTime<Utc>,
     pub user: DateTime<Utc>,
     pub organization: DateTime<Utc>,
+    /// Maximum records to return per table. Defaults to 500 when absent.
+    /// Use the latest `last_updated` timestamp from the returned records as the
+    /// cursor for the next page.
+    #[serde(default)]
+    pub limit: Option<i64>,
 }

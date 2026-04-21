@@ -17,5 +17,15 @@ pub async fn create_pastsurgicalhistory_state_table(read_pool: Pool<Sqlite>) -> 
     .execute(&read_pool)
     .await?;
 
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_pastsurgicalhistory_org_id ON pastsurgicalhistory_table_state(org_id)")
+        .execute(&read_pool)
+        .await?;
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_pastsurgicalhistory_last_updated ON pastsurgicalhistory_table_state(last_updated)")
+        .execute(&read_pool)
+        .await?;
+    sqlx::query("CREATE INDEX IF NOT EXISTS idx_pastsurgicalhistory_stream_id ON pastsurgicalhistory_table_state(stream_id)")
+        .execute(&read_pool)
+        .await?;
+
     Ok(())
 }

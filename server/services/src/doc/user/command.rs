@@ -46,7 +46,8 @@ pub async fn add_user(
     );
     let is_valid_password = ValidPassword::parse(&params.password).is_ok();
     if is_valid_password {
-        let hash = hash_password(&params.password).unwrap();
+        let hash = hash_password(&params.password)
+            .map_err(|e| ErrorData::new(-32603, &format!("Password hashing failed: {}", e)))?;
         let is_valid = verify_password(&hash, &params.confirm_password).unwrap_or(false);
         if is_valid {
             let store = user_store(&app_state.write_pool, &organization_id).await?;
@@ -140,7 +141,8 @@ pub async fn update_user_password(
     let is_valid_password = ValidPassword::parse(&password).is_ok();
     let store = user_store(&app_state.write_pool, &organization_id).await?;
     if is_valid_password {
-        let hash = hash_password(&password).unwrap();
+        let hash = hash_password(&password)
+            .map_err(|e| ErrorData::new(-32603, &format!("Password hashing failed: {}", e)))?;
         let is_valid = verify_password(&hash, &confirm_password).unwrap_or(false);
 
         if is_valid {
